@@ -2,6 +2,7 @@ const { Router } = require("express")
 
 const Product = require("../models").product
 const Category = require("../models").category
+const Review = require("../models").review
 
 const router = new Router()
 
@@ -28,11 +29,12 @@ router.get("/category", async (request, response, next) => {
 //get one product, product by id
 router.get("/:id", async (request, response, next) => {
   try {
+    console.log("in rooute")
     const { id } = request.params
-    const product = await Product.findByPk(id)
+    const product = await Product.findByPk(parseInt(id), { include: Review })
     response.send(product)
   } catch(e) {
-    next(e)
+    next(e.message)
   }
 })
 

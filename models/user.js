@@ -13,8 +13,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      user.hasOne(models.list)
-      user.hasMany(models.order)
+      user.hasMany(models.review)
     }
   };
   user.init({

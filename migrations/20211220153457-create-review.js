@@ -17,6 +17,15 @@ module.exports = {
       stars: {
         type: Sequelize.INTEGER
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
+      },
       productId: {
         type: Sequelize.INTEGER,
         references: {
