@@ -16,4 +16,8 @@ app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/products", productRouter);
 
+app.get("/", (_request, response, _next) => {
+  response.send({ message: "Welcome! This API has 2 the /auth and /products resources. Check your assignment briefing on how to use this API. Good luck!" });
+});
+
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
